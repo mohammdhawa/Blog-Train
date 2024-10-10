@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from taggit.managers import TaggableManager
+from django.contrib.auth.models import User
 
 
 class Post(models.Model):
@@ -10,18 +11,11 @@ class Post(models.Model):
     publish_date = models.DateTimeField(default=timezone.now())
     tags = TaggableManager()
     image = models.ImageField(upload_to='posts/')
-    author = models.ForeignKey('Author', related_name='author_post', on_delete=models.CASCADE)
+    author = models.ForeignKey(User, related_name='author_post', on_delete=models.CASCADE)
     category = models.ForeignKey('Category', related_name='category_post', on_delete=models.CASCADE)
     
     def __str__(self):
         return self.title[:50]
-
-
-class Author(models.Model):
-    name = models.CharField(max_length=150)
-    
-    def __str__(self):
-        return self.name
 
 
 class Category(models.Model):
