@@ -9,6 +9,7 @@ class Post(models.Model):
     draft = models.BooleanField()
     publish_date = models.DateTimeField(default=timezone.now())
     tags = TaggableManager()
+    image = models.ImageField(upload_to='posts/')
     
     def __str__(self):
         return self.title[:50]
