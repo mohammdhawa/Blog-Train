@@ -17,5 +17,19 @@
     <h5>Publish date: {{object.publish_date}}</h5>
     <hr>
     <img src="{{object.image.url}}" alt="">
+    <hr>
+
+    <h4>comments</h4>
+    <ul>
+        {% for comment in comments %}
+        <li>{{comment.user}} - {{comment.comment}}</li>
+        {% endfor %}
+    </ul>
+
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Add Comment</button>
+    </form>
 </body>
 </html>
