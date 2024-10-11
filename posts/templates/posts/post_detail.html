@@ -7,5 +7,15 @@
 </head>
 <body>
     <h1>Post detail page</h1>
+    <h3>{{object.title}}</h3>
+    <hr>
+    <p>{{object.content|safe}}</p>
+    <hr>
+    <h4>Draft: {{object.draft}}</h4>
+    <h4>Author: {{object.author}}</h4>
+    <h4>Category: {{object.category}}</h4>
+    <h5>Publish date: {{object.publish_date}}</h5>
+    <hr>
+    <img src="{{object.image.url}}" alt="">
 </body>
 </html>
