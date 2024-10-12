@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     # 'django.contrib.staticfiles',
     'drf_yasg',
+    'django_filters',
 
     
     # My Apps
@@ -62,6 +63,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'project.urls'
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
 
 TEMPLATES = [
     {
