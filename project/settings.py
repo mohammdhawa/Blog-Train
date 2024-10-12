@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "taggit",
     'django_extensions',
     'django_summernote',
+    'rest_framework',
 
     
     # My Apps
