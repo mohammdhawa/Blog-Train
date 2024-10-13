@@ -6,6 +6,12 @@ from .serializers import PostSerializer
 from .models import Post
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
+from rest_framework.pagination import PageNumberPagination
+
+
+class PaginationOfPosts(PageNumberPagination):
+    page_size = 20
+    page_size_query_param = 'page_size'
 
 
 @api_view(['GET'])
@@ -18,6 +24,7 @@ def post_list_api(request):
 class PostListAPI(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    pagination_class = PaginationOfPosts
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['category', 'draft', 'author']
     search_fields = ['title']
